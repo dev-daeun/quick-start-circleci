@@ -1,3 +1,5 @@
+SHELL := /bin/bash
+
 validate_circleci:
 	circleci config process .circleci/config.yml
 
