@@ -33,4 +33,3 @@ jobs:
           name: Lint Python
           command: |
             make lint
-
