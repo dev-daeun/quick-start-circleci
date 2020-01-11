@@ -1,14 +1,16 @@
 version: 2
 jobs:
   build:
-    docker:
-      # The primary container is an instance of the first image listed. The job's commands run in this container.
-      - image: python:3.7.3-stretch
-
     working_directory: ~/quick-start-docker
-
+    # The primary container is an instance of the first image listed. The job's commands run in this container.
+    docker:
+      - image: python:3.7.6-stretch
     steps:
       - checkout
+      - run:
+          name: Setup Python
+          command: make setup_python_environ
+
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "requirement.txt" }}
@@ -25,11 +27,5 @@ jobs:
           key: v1-dependencies-{{ checksum "requirement.txt" }}
 
       - run:
-          name: Lint Dockerfile
-          command: |
-            make lint_dockerfile
-
-      - run:
           name: Lint Python
-          command: |
-            make lint
+          command: make lint_python
