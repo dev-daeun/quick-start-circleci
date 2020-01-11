@@ -1,0 +1,36 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # The primary container is an instance of the first image listed. The job's commands run in this container.
+      - image: python:3.7.3-stretch
+
+    working_directory: ~/quick-start-docker
+
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "requirement.txt" }}
+            - v1-dependencies
+      - run:
+          name: Install PIP Dependencies
+          command: |
+            make setup_python_environ
+            make install_pip
+
+      - save_cache:
+          paths:
+            - ./qsd_venv
+          key: v1-dependencies-{{ checksum "requirement.txt" }}
+
+      - run:
+          name: Lint Dockerfile
+          command: |
+            make lint_dockerfile
+
+      - run:
+          name: Lint Python
+          command: |
+            make lint
+
