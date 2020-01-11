@@ -6,10 +6,10 @@ run_circleci_local:
 
 setup_python_environ:
 	python3 -m venv qsd_venv
-    source qsd_venv/bin/activate
+	source qsd_venv/bin/activate
 
 install_pip:
-	pip install --upgrade && pip install -r requirement.txt
+	pip install --upgrade pip && pip install -r requirement.txt
 
 lint_python:
 	source qsd_venv/bin/activate
