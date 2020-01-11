@@ -14,8 +14,7 @@ install_pip:
 	pip install --upgrade pip && pip install -r requirement.txt
 
 lint_python:
-	source qsd_venv/bin/activate
-	pylint --disable=R,C,W1203 */*.py
+	pylint --disable=R,C,W1203 *.py
 
 lint_dockerfile:
 	docker pull hadolint/hadolint
