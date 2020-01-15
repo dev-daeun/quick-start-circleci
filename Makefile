@@ -7,8 +7,8 @@ run_circleci_local:
 	circleci local execute
 
 setup_python_environ:
-	python3 -m venv qsd_venv
-	source qsd_venv/bin/activate
+	python3 -m venv venv
+	source venv/bin/activate
 
 install_pip:
 	pip install --upgrade pip && pip install -r requirement.txt
