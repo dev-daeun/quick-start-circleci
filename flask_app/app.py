@@ -147,9 +147,3 @@ def csv_aggregate_columns(groupbyop):
     log.info(res)
     return res.to_json(), status.HTTP_200_OK
 
-
-if __name__ == "__main__":  # pragma: no cover
-    log.info("START Flask")
-    app.debug = True
-    app.run(host='0.0.0.0', port=5001)
-    log.info("SHUTDOWN Flask")
