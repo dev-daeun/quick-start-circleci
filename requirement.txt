@@ -6,5 +6,7 @@ pandas
 nbval
 click
 flask
+flask_api
+flasgger
 requests
-
+sensible
